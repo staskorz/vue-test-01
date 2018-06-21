@@ -1,7 +1,8 @@
 <template>
   <div class="hello">
     <h1>{{ msg }}</h1>
-    <my-button label="Click Me!" />
+    <h3>{{ count }}</h3>
+    <my-button label="Click Me!" v-on:button-click="onClick()" />
   </div>
 </template>
 
@@ -13,7 +14,13 @@ export default {
   data() {
     return {
       msg: "Welcome to Page2",
+      count: 0,
     }
+  },
+  methods: {
+    onClick: function() {
+      this.count++
+    },
   },
   components: {
     MyButton,
