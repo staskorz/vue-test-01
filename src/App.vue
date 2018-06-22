@@ -3,6 +3,7 @@
     <p>
       <router-link to="/">Home</router-link>
       <router-link to="/page2">Page2</router-link>
+      <router-link to="/add-pet">Add Pet</router-link>
     </p>
 
     <router-view/>
