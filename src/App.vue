@@ -31,6 +31,7 @@ export default {
 a {
   color: #2c3e50;
   text-decoration: none;
+  margin: 0 10px;
 }
 
 .router-link-exact-active {
