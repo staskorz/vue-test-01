@@ -25,8 +25,15 @@ export default {
   color: #2c3e50;
   margin-top: 60px;
 }
+</style>
+
+<style scoped>
+a {
+  color: #2c3e50;
+  text-decoration: none;
+}
 
 .router-link-exact-active {
-  color: red;
+  text-decoration: underline;
 }
 </style>
