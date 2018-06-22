@@ -1,6 +1,11 @@
 <template>
   <div id="app">
     <img src="./assets/logo.png">
+    <p>
+      <router-link to="/">Home</router-link>
+      <router-link to="/page2">Page2</router-link>
+    </p>
+
     <router-view/>
   </div>
 </template>
@@ -19,5 +24,9 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+
+.router-link-exact-active {
+  color: red;
 }
 </style>
