@@ -34,10 +34,9 @@ export default {
 
   methods: {
     onSubmit() {
-      // eslint-disable-next-line no-console
-      console.log("this.pet:", this.pet)
-
       store.commit("addPet", this.pet)
+
+      this.$router.push({ name: "PetList" })
     },
   },
 }
