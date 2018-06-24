@@ -2,16 +2,14 @@
   <div>
     <h1>Pet List</h1>
 
-    <div class="content-container">
-      <div class="pets-container">
-        <pet
-          v-for="(pet, index) in pets"
-          v-bind:key="index"
-          v-bind:name="pet.name"
-          v-bind:type="pet.type"
-          class="pet"
-        />
-      </div>
+    <div class="pets-container">
+      <pet
+        v-for="(pet, index) in pets"
+        v-bind:key="index"
+        v-bind:name="pet.name"
+        v-bind:type="pet.type"
+        class="pet"
+      />
     </div>
 
   </div>
@@ -46,10 +44,6 @@ export default {
 <style scoped>
 h1 {
   font-weight: normal;
-}
-
-.content-container {
-  margin: auto;
 }
 
 .pets-container {
