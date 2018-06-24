@@ -57,7 +57,7 @@ h1 {
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: flex-start;
-  width: 1000px;
+  width: 960px;
 }
 
 .pet {
