@@ -21,6 +21,8 @@
 </template>
 
 <script>
+import store from "../store"
+
 export default {
   name: "AddPet",
 
@@ -34,6 +36,8 @@ export default {
     onSubmit() {
       // eslint-disable-next-line no-console
       console.log("this.pet:", this.pet)
+
+      store.commit("addPet", this.pet)
     },
   },
 }
