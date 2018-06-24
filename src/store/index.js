@@ -10,7 +10,9 @@ export default new Store({
   strict: !isProduciton,
 
   state: {
-    pets: [],
+    pets: new Array(7)
+      .fill(null)
+      .map((_, index) => ({ name: "Name" + index, type: "Type" + index })),
   },
 
   mutations: {
