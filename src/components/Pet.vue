@@ -1,5 +1,5 @@
 <template>
-  <div class="pet">
+  <div class="pet" v-on:click.prevent="$emit('pet-click', index)">
     <p>
       {{ name }}
     </p>
@@ -21,6 +21,7 @@ export default {
   name: "Pet",
 
   props: {
+    index: Number,
     name: String,
     imageUrl: String,
     satiety: Number,

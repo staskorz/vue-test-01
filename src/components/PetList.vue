@@ -6,9 +6,11 @@
       <pet
         v-for="(pet, index) in pets"
         v-bind:key="index"
+        v-bind:index="index"
         v-bind:name="pet.name"
         v-bind:imageUrl="pet.imageUrl"
         v-bind:satiety="pet.satiety"
+        v-on:pet-click="onPetClick"
         class="pet"
       />
     </div>
@@ -32,6 +34,12 @@ export default {
   computed: {
     pets() {
       return store.state.pets
+    },
+  },
+
+  methods: {
+    onPetClick(petId) {
+      this.$router.push({ name: "PetDetails", params: { petId } })
     },
   },
 
