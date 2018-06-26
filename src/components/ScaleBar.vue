@@ -32,7 +32,6 @@ export default {
 
 <style scoped>
 .scale-bar {
-  box-sizing: border-box;
   background-color: black;
   border-right-style: solid;
   border-right-color: lightgrey;
