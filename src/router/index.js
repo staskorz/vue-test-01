@@ -4,6 +4,7 @@ import HelloWorld from "@/components/HelloWorld"
 import Page2 from "@/components/Page2"
 import AddPet from "@/components/AddPet"
 import PetList from "@/components/PetList"
+import PetDetails from "@/components/PetDetails"
 
 Vue.use(Router)
 
@@ -30,6 +31,11 @@ export default new Router({
       path: "/pet-list",
       name: "PetList",
       component: PetList,
+    },
+    {
+      path: "/pet-details/:petId",
+      name: "PetDetails",
+      component: PetDetails,
     },
   ],
 })
