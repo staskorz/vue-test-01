@@ -7,16 +7,29 @@
     <p>
       <img v-bind:src="imageUrl" width="100" height="100">
     </p>
+
+    <p>
+      {{ hungerStatus }}
+    </p>
   </div>
 </template>
 
 <script>
+import hungerStatus from "../util/hunger-status"
+
 export default {
   name: "Pet",
 
   props: {
     name: String,
     imageUrl: String,
+    satiety: Number,
+  },
+
+  computed: {
+    hungerStatus() {
+      return hungerStatus(this.satiety)
+    },
   },
 }
 </script>

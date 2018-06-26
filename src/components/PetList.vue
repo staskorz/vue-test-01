@@ -8,6 +8,7 @@
         v-bind:key="index"
         v-bind:name="pet.name"
         v-bind:imageUrl="pet.imageUrl"
+        v-bind:satiety="pet.satiety"
         class="pet"
       />
     </div>
