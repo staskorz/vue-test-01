@@ -2,6 +2,8 @@
   <div>
     <h1>Add a Pet</h1>
 
+    <img v-bind:src="previewImageUrl" v-bind:height="IMAGE_HEIGHT" v-bind:width="IMAGE_WIDTH">
+
     <form v-on:submit.prevent="onSubmit">
       <p>
         <label for="pet-name">Pet Name:</label>
@@ -14,6 +16,12 @@
       </p>
 
       <p>
+        <label for="image-url">Image URL:</label>
+        <input v-model="pet.imageUrl" type="text" id="image-url" placeholder="your pet's type...">
+        <input type="button" value="Autofill" v-on:click.prevent="onAutofill">
+      </p>
+
+      <p>
         <input type="submit" value="Add Pet">
         <input type="button" value="Cancel" v-on:click.prevent="onCancel">
       </p>
@@ -23,19 +31,43 @@
 
 <script>
 import store from "../store"
+import petImageUrl from "../fixtures/pet-image-url"
+
+const TRANSPARRENT_EMPTY_GIF =
+  "data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+
+const IMAGE_WIDTH = "100"
+const IMAGE_HEIGHT = "100"
 
 export default {
   name: "AddPet",
 
   data() {
     return {
-      pet: {},
+      pet: {
+        name: "",
+        type: "",
+        imageUrl: "",
+      },
+
+      IMAGE_WIDTH,
+      IMAGE_HEIGHT,
     }
   },
 
   methods: {
     goToPetList() {
       this.$router.push({ name: "PetList" })
+    },
+
+    onAutofill() {
+      const newPetIndex = store.state.pets.length
+
+      this.pet.imageUrl = petImageUrl({
+        id: newPetIndex,
+        width: IMAGE_WIDTH,
+        height: IMAGE_HEIGHT,
+      })
     },
 
     onSubmit() {
@@ -46,6 +78,14 @@ export default {
 
     onCancel() {
       this.goToPetList()
+    },
+  },
+
+  computed: {
+    previewImageUrl() {
+      const { imageUrl } = this.pet
+
+      return imageUrl || TRANSPARRENT_EMPTY_GIF
     },
   },
 }
