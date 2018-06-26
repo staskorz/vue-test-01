@@ -15,6 +15,7 @@
 
       <p>
         <input type="submit" value="Add Pet">
+        <input type="button" value="Cancel" v-on:click.prevent="onCancel">
       </p>
     </form>
   </div>
@@ -33,10 +34,18 @@ export default {
   },
 
   methods: {
+    goToPetList() {
+      this.$router.push({ name: "PetList" })
+    },
+
     onSubmit() {
       store.commit("addPet", this.pet)
 
-      this.$router.push({ name: "PetList" })
+      this.goToPetList()
+    },
+
+    onCancel() {
+      this.goToPetList()
     },
   },
 }
