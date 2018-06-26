@@ -22,6 +22,7 @@ export default new Store({
         imageUrl,
         food,
         starvationRate,
+        satiety: 100,
       })
     },
 
