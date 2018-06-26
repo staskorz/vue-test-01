@@ -36,6 +36,18 @@
       </p>
 
       <p>
+        <label for="starvation-rate">Starvation Rate:</label>
+        <input
+          v-model.number="pet.starvationRate"
+          type="number"
+          step="0.1"
+          min="0"
+          id="starvation-rate"
+          placeholder="your pet's starvation rate..."
+        >
+      </p>
+
+      <p>
         <input type="submit" value="Add Pet">
         <input type="button" value="Cancel" v-on:click.prevent="onCancel">
       </p>
@@ -63,6 +75,7 @@ export default {
         name: "",
         type: "",
         imageUrl: "",
+        starvationRate: "",
         food: "",
       },
 

@@ -16,12 +16,13 @@ export default new Store({
   },
 
   mutations: {
-    addPet: (state, { name, type, imageUrl, food }) => {
+    addPet: (state, { name, type, imageUrl, food, starvationRate }) => {
       state.pets.push({
         name,
         type,
         imageUrl,
         food,
+        starvationRate,
       })
     },
   },
