@@ -24,5 +24,17 @@ export default new Store({
         starvationRate,
       })
     },
+
+    decreaseSatiety: state => {
+      state.pets.forEach(pet => {
+        if (pet.satiety === 0) {
+          return
+        }
+
+        const newSatiety = (pet.satiety -= pet.starvationRate)
+
+        pet.satiety = newSatiety > 0 ? newSatiety : 0
+      })
+    },
   },
 })

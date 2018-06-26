@@ -12,6 +12,12 @@
 </template>
 
 <script>
+import store from "./store"
+
+setInterval(() => {
+  store.commit("decreaseSatiety")
+}, 1000)
+
 export default {
   name: "App",
 }

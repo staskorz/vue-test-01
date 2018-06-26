@@ -37,7 +37,7 @@ export default {
   data() {
     return {
       scaleBar: {
-        width: 140,
+        width: 100,
         height: 3,
       },
     }
