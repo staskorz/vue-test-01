@@ -66,5 +66,6 @@ h1 {
 .pet {
   margin: 20px;
   flex-basis: 1 0px;
+  cursor: pointer;
 }
 </style>
