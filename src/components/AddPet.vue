@@ -22,6 +22,20 @@
       </p>
 
       <p>
+        <label for="pet-food">Food:</label>
+        <select v-model="pet.food" id="pet-food">
+          <option disabled value="">your pet's food...</option>
+          <option
+            v-for="foodType in FOOD_TYPES"
+            v-bind:key="foodType"
+            v-bind:value="foodType"
+          >
+            {{ foodType }}
+          </option>
+        </select>
+      </p>
+
+      <p>
         <input type="submit" value="Add Pet">
         <input type="button" value="Cancel" v-on:click.prevent="onCancel">
       </p>
@@ -32,6 +46,7 @@
 <script>
 import store from "../store"
 import petImageUrl from "../fixtures/pet-image-url"
+import { FOOD_TYPES } from "../fixtures/food"
 
 const TRANSPARRENT_EMPTY_GIF =
   "data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
@@ -48,10 +63,13 @@ export default {
         name: "",
         type: "",
         imageUrl: "",
+        food: "",
       },
 
       IMAGE_WIDTH,
       IMAGE_HEIGHT,
+
+      FOOD_TYPES,
     }
   },
 
