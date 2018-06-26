@@ -1,5 +1,6 @@
 import Vue from "vue"
 import Vuex, { Store } from "vuex"
+import SAMPLE_PETS from "../fixtures/sample-pets"
 
 Vue.use(Vuex)
 
@@ -10,9 +11,7 @@ export default new Store({
   strict: !isProduciton,
 
   state: {
-    pets: new Array(7)
-      .fill(null)
-      .map((_, index) => ({ name: "Name" + index, type: "Type" + index })),
+    pets: SAMPLE_PETS,
   },
 
   mutations: {
