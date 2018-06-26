@@ -7,7 +7,7 @@
         v-for="(pet, index) in pets"
         v-bind:key="index"
         v-bind:name="pet.name"
-        v-bind:type="pet.type"
+        v-bind:imageUrl="pet.imageUrl"
         class="pet"
       />
     </div>

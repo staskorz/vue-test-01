@@ -1,11 +1,11 @@
 <template>
   <div class="pet">
     <p>
-      Name: {{ name }}
+      {{ name }}
     </p>
 
     <p>
-      Type: {{ type }}
+      <img v-bind:src="imageUrl" width="100" height="100">
     </p>
   </div>
 </template>
@@ -16,7 +16,7 @@ export default {
 
   props: {
     name: String,
-    type: String,
+    imageUrl: String,
   },
 }
 </script>
