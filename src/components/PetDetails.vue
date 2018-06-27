@@ -26,6 +26,22 @@
       <p>
         Eats: {{ pet.food }}
       </p>
+
+      <p>
+        <label for="pet-food">Food:</label>
+        <select v-model="feedWith" id="pet-food">
+          <option disabled value="">your pet's food...</option>
+          <option
+            v-for="foodType in FOOD_TYPES"
+            v-bind:key="foodType"
+            v-bind:value="foodType"
+          >
+            {{ foodType }}
+          </option>
+        </select>
+
+        <input type="button" value="Feed" v-on:click.prevent="onFeed">
+      </p>
     </div>
 
   </div>
@@ -34,6 +50,7 @@
 <script>
 import store from "../store"
 import ScaleBar from "./ScaleBar"
+import { FOOD_TYPES } from "../fixtures/food"
 
 export default {
   name: "PetDetails",
@@ -44,14 +61,29 @@ export default {
         width: 100,
         height: 3,
       },
+
+      feedWith: "",
+
+      FOOD_TYPES,
     }
   },
 
-  computed: {
-    pet() {
-      const { petId } = this.$route.params
+  methods: {
+    onFeed() {
+      store.commit("feed", {
+        petId: this.petId,
+        food: this.feedWith,
+      })
+    },
+  },
 
-      return store.state.pets[petId]
+  computed: {
+    petId() {
+      return this.$route.params.petId
+    },
+
+    pet() {
+      return store.state.pets[this.petId]
     },
   },
 
