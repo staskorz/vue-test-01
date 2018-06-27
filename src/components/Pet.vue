@@ -1,14 +1,14 @@
 <template>
   <div class="pet" v-on:click.prevent="$emit('pet-click', index)">
-    <p>
+    <p data-test="name">
       {{ name }}
     </p>
 
     <p>
-      <img v-bind:src="imageUrl" width="100" height="100">
+      <img data-test="image" v-bind:src="imageUrl" width="100" height="100">
     </p>
 
-    <p>
+    <p data-test="hunger-status">
       {{ hungerStatus }}
     </p>
   </div>
