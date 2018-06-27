@@ -22,6 +22,10 @@
           v-bind:height="scaleBar.height"
         />
       </p>
+
+      <p>
+        Eats: {{ pet.food }}
+      </p>
     </div>
 
   </div>
