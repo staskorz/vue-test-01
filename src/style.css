@@ -1,0 +1,11 @@
+.router-link-exact-active {
+  text-decoration: underline;
+}
+
+.nav-link:focus {
+  text-decoration: underline;
+}
+
+.navbar-brand.router-link-exact-active {
+  text-decoration: none;
+}
