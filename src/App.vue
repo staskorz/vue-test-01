@@ -10,6 +10,8 @@
 </template>
 
 <script>
+import "bootstrap/dist/css/bootstrap.min.css"
+
 import store from "./store"
 
 setInterval(() => {
