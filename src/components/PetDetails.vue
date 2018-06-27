@@ -16,6 +16,10 @@
       </p>
 
       <p>
+        {{ hungerStatus }}
+      </p>
+
+      <p>
         <scale-bar
           v-bind:percentage="pet.satiety"
           v-bind:width="scaleBar.width"
@@ -51,6 +55,7 @@
 import store from "../store"
 import ScaleBar from "./ScaleBar"
 import { FOOD_TYPES } from "../fixtures/food"
+import hungerStatus from "../util/hunger-status"
 
 export default {
   name: "PetDetails",
@@ -84,6 +89,10 @@ export default {
 
     pet() {
       return store.state.pets[this.petId]
+    },
+
+    hungerStatus() {
+      return hungerStatus(this.pet.satiety)
     },
   },
 
