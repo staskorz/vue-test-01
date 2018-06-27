@@ -11,11 +11,20 @@
     <p data-test="hunger-status">
       {{ hungerStatus }}
     </p>
+
+    <p class="scale-bar-container">
+      <scale-bar
+        v-bind:percentage="satiety"
+        v-bind:width="scaleBar.width"
+        v-bind:height="scaleBar.height"
+      />
+    </p>
   </div>
 </template>
 
 <script>
 import hungerStatus from "../util/hunger-status"
+import ScaleBar from "./ScaleBar"
 
 export default {
   name: "Pet",
@@ -27,10 +36,23 @@ export default {
     satiety: Number,
   },
 
+  data() {
+    return {
+      scaleBar: {
+        width: 100,
+        height: 3,
+      },
+    }
+  },
+
   computed: {
     hungerStatus() {
       return hungerStatus(this.satiety)
     },
+  },
+
+  components: {
+    "scale-bar": ScaleBar,
   },
 }
 </script>
@@ -41,5 +63,9 @@ export default {
   background-color: lightgrey;
   width: 200px;
   height: 200px;
+}
+
+.scale-bar-container {
+  margin-top: -20px;
 }
 </style>
