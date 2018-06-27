@@ -1,10 +1,8 @@
 <template>
   <div id="app">
     <p>
-      <router-link to="/">Home</router-link>
-      <router-link to="/page2">Page2</router-link>
+      <router-link to="/">Pet List</router-link>
       <router-link to="/add-pet">Add Pet</router-link>
-      <router-link to="/pet-list">Pet List</router-link>
     </p>
 
     <router-view/>
