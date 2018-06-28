@@ -1,3 +1,8 @@
+h1 {
+  font-weight: normal;
+  margin-bottom: 32px;
+}
+
 .router-link-exact-active {
   text-decoration: underline;
 }
@@ -8,4 +13,39 @@
 
 .navbar-brand.router-link-exact-active {
   text-decoration: none;
+}
+
+.main {
+  text-align: center;
+}
+
+.pets-container {
+  display: inline-flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  width: 960px;
+}
+
+.pet {
+  width: 200px;
+  height: 255px;
+  margin: 20px;
+  flex-basis: 1 0px;
+  text-align: left;
+}
+
+.pet a {
+  display: block;
+  margin-top: 8px;
+}
+
+.pet .card-body {
+  padding-bottom: 4px;
+}
+
+.scale-bar {
+  background-color: lightgrey;
+  border-left-style: solid;
+  border-left-color: black;
 }

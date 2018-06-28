@@ -59,12 +59,10 @@
 import store from "../store"
 import petImageUrl from "../fixtures/pet-image-url"
 import { FOOD_TYPES } from "../fixtures/food"
+import { IMAGE_WIDTH, IMAGE_HEIGHT } from "../constants"
 
 const TRANSPARRENT_EMPTY_GIF =
   "data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
-
-const IMAGE_WIDTH = "100"
-const IMAGE_HEIGHT = "100"
 
 export default {
   name: "AddPet",
@@ -121,10 +119,3 @@ export default {
   },
 }
 </script>
-
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-h1 {
-  font-weight: normal;
-}
-</style>

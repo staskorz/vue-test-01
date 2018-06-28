@@ -1,30 +1,25 @@
 <template>
-  <div class="pet" v-on:click.prevent="$emit('pet-click', index)">
-    <p data-test="name">
-      {{ name }}
-    </p>
+  <div class="pet card">
+    <img class="card-img-top" data-test="image" v-bind:src="imageUrl" v-bind:width="IMAGE_WIDTH" v-bind:height="IMAGE_HEIGHT">
 
-    <p>
-      <img data-test="image" v-bind:src="imageUrl" width="100" height="100">
-    </p>
+    <scale-bar
+      v-bind:percentage="satiety"
+      v-bind:width="scaleBar.width"
+      v-bind:height="scaleBar.height"
+    />
 
-    <p data-test="hunger-status">
-      {{ hungerStatus }}
-    </p>
-
-    <p class="scale-bar-container">
-      <scale-bar
-        v-bind:percentage="satiety"
-        v-bind:width="scaleBar.width"
-        v-bind:height="scaleBar.height"
-      />
-    </p>
+    <div class="card-body">
+      <h5 class="card-title" data-test="name">{{ name }}</h5>
+      <h6 class="card-subtitle text-muted" data-test="hunger-status">{{ hungerStatus }}</h6>
+      <a href="#" class="card-link text-right" v-on:click.prevent="$emit('pet-click', index)">Details</a>
+    </div>
   </div>
 </template>
 
 <script>
 import hungerStatus from "../util/hunger-status"
 import ScaleBar from "./ScaleBar"
+import { IMAGE_WIDTH, IMAGE_HEIGHT } from "../constants"
 
 export default {
   name: "Pet",
@@ -39,9 +34,12 @@ export default {
   data() {
     return {
       scaleBar: {
-        width: 100,
-        height: 3,
+        width: 198,
+        height: 2,
       },
+
+      IMAGE_WIDTH,
+      IMAGE_HEIGHT,
     }
   },
 
@@ -56,16 +54,3 @@ export default {
   },
 }
 </script>
-
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-.pet {
-  background-color: lightgrey;
-  width: 200px;
-  height: 200px;
-}
-
-.scale-bar-container {
-  margin-top: -20px;
-}
-</style>
