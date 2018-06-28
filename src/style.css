@@ -1,6 +1,6 @@
 h1 {
   font-weight: normal;
-  margin-bottom: 32px;
+  margin-bottom: 48px;
 }
 
 .router-link-exact-active {
@@ -48,6 +48,44 @@ h1 {
   border-left-style: solid;
   border-left-color: black;
   display: inline-block;
+}
+
+.pet-details .details-container {
+  display: inline-block;
+  width: 500px;
+  text-align: left;
+  margin-top: 20px;
+}
+
+.pet-details .details-header {
+  padding: 0;
+  display: flex;
+  align-items: center;
+}
+
+.pet-details .pet-image {
+  border-radius: 3px;
+}
+
+.pet-details .details-column {
+  padding: 8px 12px;
+  font-size: 1.1rem;
+}
+
+.pet-details .scale-bar {
+  margin-top: 22px;
+}
+
+.pet-details .input-group-container {
+  margin-top: 16px;
+}
+
+.pet-details .feed-select {
+  width: 350px;
+}
+
+.pet-details .btn-outline-secondary:focus {
+  box-shadow: none;
 }
 
 @media only screen and (min-width: 240px) {
