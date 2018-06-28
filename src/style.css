@@ -24,7 +24,6 @@ h1 {
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: flex-start;
-  width: 960px;
 }
 
 .pet {
@@ -48,4 +47,34 @@ h1 {
   background-color: lightgrey;
   border-left-style: solid;
   border-left-color: black;
+}
+
+@media only screen and (min-width: 240px) {
+  .pets-container {
+    width: 240px;
+  }
+}
+
+@media only screen and (min-width: 480px) {
+  .pets-container {
+    width: 480px;
+  }
+}
+
+@media only screen and (min-width: 720px) {
+  .pets-container {
+    width: 720px;
+  }
+}
+
+@media only screen and (min-width: 960px) {
+  .pets-container {
+    width: 960px;
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  .pets-container {
+    width: 1200px;
+  }
 }
