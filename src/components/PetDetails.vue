@@ -33,7 +33,7 @@
 
       <p>
         <label for="pet-food">Food:</label>
-        <select v-model="feedWith" id="pet-food">
+        <select v-model="feedWith" id="pet-food" v-bind:disabled="isDead">
           <option disabled value="">your pet's food...</option>
           <option
             v-for="foodType in FOOD_TYPES"
@@ -44,7 +44,7 @@
           </option>
         </select>
 
-        <input type="button" value="Feed" v-on:click.prevent="onFeed">
+        <input type="button" value="Feed" v-on:click.prevent="onFeed" v-bind:disabled="isDead">
       </p>
     </div>
 
@@ -93,6 +93,10 @@ export default {
 
     hungerStatus() {
       return hungerStatus(this.pet.satiety)
+    },
+
+    isDead() {
+      return this.pet.satiety === 0
     },
   },
 
