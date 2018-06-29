@@ -28,13 +28,3 @@ export default {
   },
 }
 </script>
-
-<style scoped>
-.scale-bar {
-  background-color: lightgrey;
-  border-left-style: solid;
-  border-left-color: black;
-  display: inline-block;
-  box-sizing: border-box;
-}
-</style>

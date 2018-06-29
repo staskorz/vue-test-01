@@ -1,0 +1,134 @@
+h1 {
+  font-weight: normal;
+  margin-bottom: 48px;
+}
+
+.router-link-exact-active {
+  text-decoration: underline;
+}
+
+.nav-link:focus {
+  text-decoration: underline;
+}
+
+.navbar-brand.router-link-exact-active {
+  text-decoration: none;
+}
+
+.main {
+  text-align: center;
+}
+
+.add-pet form {
+  width: 600px;
+  display: inline-block;
+  text-align: left;
+}
+
+.add-pet .preview-image {
+  margin-bottom: 16px;
+}
+
+.add-pet .preview-image img {
+  margin-top: 8px;
+  border-radius: 3px;
+}
+
+.pets-container {
+  display: inline-flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+
+.pet {
+  width: 200px;
+  height: 255px;
+  margin: 20px;
+  flex-basis: 1 0px;
+  text-align: left;
+}
+
+.pet a {
+  display: block;
+  margin-top: 8px;
+}
+
+.pet .card-body {
+  padding-bottom: 4px;
+}
+
+.scale-bar {
+  background-color: lightgrey;
+  border-left-style: solid;
+  border-left-color: black;
+  display: inline-block;
+}
+
+.pet-details .details-container {
+  display: inline-block;
+  width: 500px;
+  text-align: left;
+  margin-top: 20px;
+}
+
+.pet-details .details-header {
+  padding: 0;
+  display: flex;
+  align-items: center;
+}
+
+.pet-details .pet-image {
+  border-radius: 3px;
+}
+
+.pet-details .details-column {
+  padding: 8px 12px;
+  font-size: 1.1rem;
+}
+
+.pet-details .scale-bar {
+  margin-top: 22px;
+}
+
+.pet-details .input-group-container {
+  margin-top: 16px;
+}
+
+.pet-details .form-control:focus {
+  box-shadow: none;
+}
+
+.pet-details .btn-outline-secondary:focus {
+  box-shadow: none;
+}
+
+@media only screen and (min-width: 240px) {
+  .pets-container {
+    width: 240px;
+  }
+}
+
+@media only screen and (min-width: 480px) {
+  .pets-container {
+    width: 480px;
+  }
+}
+
+@media only screen and (min-width: 720px) {
+  .pets-container {
+    width: 720px;
+  }
+}
+
+@media only screen and (min-width: 960px) {
+  .pets-container {
+    width: 960px;
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  .pets-container {
+    width: 1200px;
+  }
+}

@@ -1,53 +1,58 @@
 <template>
-  <div>
+  <div class="pet-details">
     <h1>Pet Details</h1>
 
-    <div>
-      <p>
-        Name: {{ pet.name }}
-      </p>
+    <div class="container details-container">
+      <div class="row details-header">
+        <div class="col">
+          <img v-bind:src="pet.imageUrl" v-bind:width="IMAGE_WIDTH" v-bind:height="IMAGE_HEIGHT" class="pet-image">
+        </div>
+        
+        <div class="col details-column container">
+          <div class="row">
+            <span class="text-muted col-sm-4">Name</span><h5 class="col-sm-8">{{ pet.name }}</h5>
+          </div>
+          <div class="row">
+            <span class="text-muted col-sm-4">Type</span><h5 class="col-sm-8">{{ pet.type }}</h5>
+          </div>
+          <div class="row">
+            <span class="text-muted col-sm-4">Status</span><h5 class="col-sm-8">{{ hungerStatus }}</h5>
+          </div>
+          <div class="row">
+            <span class="text-muted col-sm-4">Eats</span><h5 class="col-sm-8">{{ pet.food }}</h5>
+          </div>
+        </div>
+      </div>
 
-      <p>
-        Type: {{ pet.type }}
-      </p>
+      <scale-bar
+        v-bind:percentage="pet.satiety"
+        v-bind:width="scaleBar.width"
+        v-bind:height="scaleBar.height"
+      />
+      
+      <div class="input-group-container">
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text">Food</span>
+          </div>
 
-      <p>
-        <img v-bind:src="pet.imageUrl" width="100" height="100">
-      </p>
+          <select v-model="feedWith" v-bind:disabled="isDead" class="form-control">
+            <option disabled value="">your pet's food...</option>
+            <option
+              v-for="foodType in FOOD_TYPES"
+              v-bind:key="foodType"
+              v-bind:value="foodType"
+            >
+              {{ foodType }}
+            </option>
+          </select>
 
-      <p>
-        {{ hungerStatus }}
-      </p>
-
-      <p>
-        <scale-bar
-          v-bind:percentage="pet.satiety"
-          v-bind:width="scaleBar.width"
-          v-bind:height="scaleBar.height"
-        />
-      </p>
-
-      <p>
-        Eats: {{ pet.food }}
-      </p>
-
-      <p>
-        <label for="pet-food">Food:</label>
-        <select v-model="feedWith" id="pet-food" v-bind:disabled="isDead">
-          <option disabled value="">your pet's food...</option>
-          <option
-            v-for="foodType in FOOD_TYPES"
-            v-bind:key="foodType"
-            v-bind:value="foodType"
-          >
-            {{ foodType }}
-          </option>
-        </select>
-
-        <input type="button" value="Feed" v-on:click.prevent="onFeed" v-bind:disabled="isDead">
-      </p>
+          <div class="input-group-append">
+            <button class="btn btn-outline-secondary" type="button" v-on:click.prevent="onFeed" v-bind:disabled="isDead">Feed</button>
+          </div>
+        </div>
+        </div>
     </div>
-
   </div>
 </template>
 
@@ -55,6 +60,7 @@
 import store from "../store"
 import ScaleBar from "./ScaleBar"
 import { FOOD_TYPES } from "../fixtures/food"
+import { IMAGE_WIDTH, IMAGE_HEIGHT } from "../constants"
 import hungerStatus from "../util/hunger-status"
 
 export default {
@@ -63,13 +69,16 @@ export default {
   data() {
     return {
       scaleBar: {
-        width: 100,
+        width: 470,
         height: 3,
       },
 
       feedWith: "",
 
       FOOD_TYPES,
+
+      IMAGE_WIDTH,
+      IMAGE_HEIGHT,
     }
   },
 
@@ -105,10 +114,3 @@ export default {
   },
 }
 </script>
-
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-h1 {
-  font-weight: normal;
-}
-</style>

@@ -11,7 +11,6 @@
         v-bind:imageUrl="pet.imageUrl"
         v-bind:satiety="pet.satiety"
         v-on:pet-click="onPetClick"
-        class="pet"
       />
     </div>
 
@@ -48,24 +47,3 @@ export default {
   },
 }
 </script>
-
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-h1 {
-  font-weight: normal;
-}
-
-.pets-container {
-  display: inline-flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: flex-start;
-  width: 960px;
-}
-
-.pet {
-  margin: 20px;
-  flex-basis: 1 0px;
-  cursor: pointer;
-}
-</style>

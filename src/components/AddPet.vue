@@ -1,29 +1,39 @@
 <template>
-  <div>
+  <div class="add-pet">
     <h1>Add a Pet</h1>
 
-    <img v-bind:src="previewImageUrl" v-bind:height="IMAGE_HEIGHT" v-bind:width="IMAGE_WIDTH">
-
     <form v-on:submit.prevent="onSubmit">
-      <p>
-        <label for="pet-name">Pet Name:</label>
-        <input v-model="pet.name" type="text" id="pet-name" placeholder="your pet's name...">
-      </p>
+      <div class="form-group">
+        <label for="pet-name">Pet Name</label>
+        <input v-model="pet.name" type="text" id="pet-name" class="form-control" placeholder="your pet's name...">
+      </div>
 
-      <p>
-        <label for="pet-type">Pet Type:</label>
-        <input v-model="pet.type" type="text" id="pet-type" placeholder="your pet's type...">
-      </p>
+      <div class="form-group">
+        <label for="pet-type">Pet Type</label>
+        <input v-model="pet.type" type="text" id="pet-type" class="form-control" placeholder="your pet's type...">
+      </div>
 
-      <p>
-        <label for="image-url">Image URL:</label>
-        <input v-model="pet.imageUrl" type="text" id="image-url" placeholder="your pet's type...">
-        <input type="button" value="Autofill" v-on:click.prevent="onAutofill">
-      </p>
+      <div class="form-group">
+        <label for="image-url">Image URL</label>
 
-      <p>
-        <label for="pet-food">Food:</label>
-        <select v-model="pet.food" id="pet-food">
+        <div class="input-group">
+          <input v-model="pet.imageUrl" type="text" id="image-url" class="form-control" placeholder="your pet's type...">
+
+          <div class="input-group-append">
+            <button class="btn btn-outline-secondary" type="button" v-on:click.prevent="onAutofill">Autofill</button>
+          </div>
+        </div>
+      </div>
+
+      <div v-bind:style="previewImageStyle" class="preview-image">
+        <div>Image Preview</div>
+        <img v-bind:src="previewImageUrl" v-bind:height="IMAGE_HEIGHT" v-bind:width="IMAGE_WIDTH">
+      </div>
+
+      <div class="form-group">
+        <label for="pet-food">Food</label>
+
+        <select v-model="pet.food" id="pet-food" class="form-control">
           <option disabled value="">your pet's food...</option>
           <option
             v-for="foodType in FOOD_TYPES"
@@ -33,24 +43,26 @@
             {{ foodType }}
           </option>
         </select>
-      </p>
+      </div>
 
-      <p>
-        <label for="starvation-rate">Starvation Rate:</label>
+      <div class="form-group">
+        <label for="starvation-rate">Starvation Rate</label>
+
         <input
           v-model.number="pet.starvationRate"
           type="number"
           step="0.1"
           min="0"
           id="starvation-rate"
+          class="form-control"
           placeholder="your pet's starvation rate..."
         >
-      </p>
+      </div>
 
-      <p>
-        <input type="submit" value="Add Pet">
-        <input type="button" value="Cancel" v-on:click.prevent="onCancel">
-      </p>
+      <div class="text-right">
+        <button type="submit" class="btn btn-primary">Add Pet</button>
+        <button type="button" v-on:click.prevent="onCancel" class="btn btn-secondary">Cancel</button>
+      </div>
     </form>
   </div>
 </template>
@@ -59,12 +71,10 @@
 import store from "../store"
 import petImageUrl from "../fixtures/pet-image-url"
 import { FOOD_TYPES } from "../fixtures/food"
+import { IMAGE_WIDTH, IMAGE_HEIGHT } from "../constants"
 
 const TRANSPARRENT_EMPTY_GIF =
   "data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
-
-const IMAGE_WIDTH = "100"
-const IMAGE_HEIGHT = "100"
 
 export default {
   name: "AddPet",
@@ -118,13 +128,10 @@ export default {
 
       return imageUrl || TRANSPARRENT_EMPTY_GIF
     },
+
+    previewImageStyle() {
+      return this.pet.imageUrl ? null : { display: "none" }
+    },
   },
 }
 </script>
-
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-h1 {
-  font-weight: normal;
-}
-</style>

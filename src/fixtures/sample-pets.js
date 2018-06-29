@@ -1,4 +1,5 @@
 import petImageUrl from "./pet-image-url"
+import { IMAGE_WIDTH, IMAGE_HEIGHT } from "../constants"
 
 const PETS = [
   {
@@ -36,5 +37,9 @@ const PETS = [
 export default PETS.map((pet, index) => ({
   ...pet,
   satiety: 100,
-  imageUrl: petImageUrl({ id: index, width: 100, height: 100 }),
+  imageUrl: petImageUrl({
+    id: index,
+    width: IMAGE_WIDTH,
+    height: IMAGE_HEIGHT,
+  }),
 }))
