@@ -19,6 +19,21 @@ h1 {
   text-align: center;
 }
 
+.add-pet form {
+  width: 600px;
+  display: inline-block;
+  text-align: left;
+}
+
+.add-pet .preview-image {
+  margin-bottom: 16px;
+}
+
+.add-pet .preview-image img {
+  margin-top: 8px;
+  border-radius: 3px;
+}
+
 .pets-container {
   display: inline-flex;
   flex-direction: row;
