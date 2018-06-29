@@ -6,6 +6,6 @@ const validatorOptions = {
 }
 
 Validator.extend("url_allow_relative", {
-  getMessage: field => `The ${field} is not a valid URL`,
+  getMessage: field => `The ${field} field is not a valid URL.`,
   validate: value => isURL(value, validatorOptions),
 })
