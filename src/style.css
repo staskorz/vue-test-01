@@ -80,8 +80,8 @@ h1 {
   margin-top: 16px;
 }
 
-.pet-details .feed-select {
-  width: 350px;
+.pet-details .form-control:focus {
+  box-shadow: none;
 }
 
 .pet-details .btn-outline-secondary:focus {

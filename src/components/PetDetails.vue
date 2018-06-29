@@ -36,7 +36,7 @@
             <span class="input-group-text">Food</span>
           </div>
 
-          <select v-model="feedWith" v-bind:disabled="isDead" class="feed-select">
+          <select v-model="feedWith" v-bind:disabled="isDead" class="form-control">
             <option disabled value="">your pet's food...</option>
             <option
               v-for="foodType in FOOD_TYPES"
