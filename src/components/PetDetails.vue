@@ -31,7 +31,7 @@
       />
       
       <div class="input-group-container">
-        <div class="input-group feed-input-group">
+        <div class="input-group">
           <div class="input-group-prepend">
             <span class="input-group-text">Food</span>
           </div>
