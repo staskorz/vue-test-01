@@ -5,35 +5,81 @@
     <form v-on:submit.prevent="onSubmit">
       <div class="form-group">
         <label for="pet-name">Pet Name</label>
-        <input v-model="pet.name" type="text" id="pet-name" class="form-control" placeholder="your pet's name...">
+
+        <input
+          v-model.trim="pet.name"
+          type="text"
+          id="pet-name"
+          name="Pet Name"
+          v-validate="{ required: true, max: 20 }"
+          v-bind:class="{ 'form-control': true, 'is-invalid': errors.has('Pet Name') }"
+          placeholder="your pet's name..."
+        >
+
+        <div class="invalid-feedback">
+          {{ errors.first('Pet Name') }}
+        </div>
       </div>
 
       <div class="form-group">
         <label for="pet-type">Pet Type</label>
-        <input v-model="pet.type" type="text" id="pet-type" class="form-control" placeholder="your pet's type...">
+        
+        <input
+          v-model.trim="pet.type"
+          type="text"
+          id="pet-type"
+          name="Pet Type"
+          v-validate="{ required: true, max: 20 }"
+          v-bind:class="{ 'form-control': true, 'is-invalid': errors.has('Pet Type') }"
+          placeholder="your pet's type..."
+        >
+
+        <div class="invalid-feedback">
+          {{ errors.first('Pet Type') }}
+        </div>
       </div>
 
       <div class="form-group">
-        <label for="image-url">Image URL</label>
+        <label for="image-url">Pet Image URL</label>
 
         <div class="input-group">
-          <input v-model="pet.imageUrl" type="text" id="image-url" class="form-control" placeholder="your pet's type...">
+          <input
+            v-model.trim="pet.imageUrl"
+            type="text"
+            id="image-url"
+            name="Pet Image URL"
+            v-validate="{ required: true, 'url_allow_relative': true }"
+            v-bind:class="{ 'form-control': true, 'is-invalid': errors.has('Pet Image URL') }"
+            placeholder="URL of a picture of your pet..."
+          >
 
           <div class="input-group-append">
             <button class="btn btn-outline-secondary" type="button" v-on:click.prevent="onAutofill">Autofill</button>
           </div>
+
+          <div class="invalid-feedback">
+            {{ errors.first('Pet Image URL') }}
+          </div>
         </div>
+
+        
       </div>
 
       <div v-bind:style="previewImageStyle" class="preview-image">
-        <div>Image Preview</div>
+        <div>Pet Image Preview</div>
         <img v-bind:src="previewImageUrl" v-bind:height="IMAGE_HEIGHT" v-bind:width="IMAGE_WIDTH">
       </div>
 
       <div class="form-group">
-        <label for="pet-food">Food</label>
+        <label for="pet-food">Pet Food</label>
 
-        <select v-model="pet.food" id="pet-food" class="form-control">
+        <select
+          v-model="pet.food"
+          id="pet-food"
+          name="Pet Food"
+          v-validate="{ required: true }"
+          v-bind:class="{ 'form-control': true, 'is-invalid': errors.has('Pet Food') }"
+        >
           <option disabled value="">your pet's food...</option>
           <option
             v-for="foodType in FOOD_TYPES"
@@ -43,20 +89,30 @@
             {{ foodType }}
           </option>
         </select>
+
+        <div class="invalid-feedback">
+          {{ errors.first('Pet Food') }}
+        </div>
       </div>
 
       <div class="form-group">
-        <label for="starvation-rate">Starvation Rate</label>
+        <label for="starvation-rate">Pet Starvation Rate</label>
 
         <input
           v-model.number="pet.starvationRate"
           type="number"
           step="0.1"
-          min="0"
+          min="0.1"
           id="starvation-rate"
-          class="form-control"
+          name="Pet Starvation Rate"
+          v-validate="{ required: true, decimal: true, min_value: 0.1, max_value: 5 }"
+          v-bind:class="{ 'form-control': true, 'is-invalid': errors.has('Pet Starvation Rate') }"
           placeholder="your pet's starvation rate..."
         >
+
+        <div class="invalid-feedback">
+          {{ errors.first('Pet Starvation Rate') }}
+        </div>
       </div>
 
       <div class="text-right">
@@ -112,9 +168,13 @@ export default {
     },
 
     onSubmit() {
-      store.commit("addPet", this.pet)
+      this.$validator.validateAll().then(result => {
+        if (result) {
+          store.commit("addPet", this.pet)
 
-      this.goToPetList()
+          this.goToPetList()
+        }
+      })
     },
 
     onCancel() {
@@ -130,7 +190,9 @@ export default {
     },
 
     previewImageStyle() {
-      return this.pet.imageUrl ? null : { display: "none" }
+      return !this.pet.imageUrl || this.errors.has("Pet Image URL")
+        ? { display: "none" }
+        : null
     },
   },
 }
