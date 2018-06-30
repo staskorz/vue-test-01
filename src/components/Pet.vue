@@ -8,7 +8,7 @@
       v-bind:height="scaleBar.height"
     />
 
-    <div class="card-body">
+    <div class="card-body" v-bind:style="hungerStatusBasedStyle">
       <h5 class="card-title" data-test="name">{{ name }}</h5>
       <h6 class="card-subtitle text-muted" data-test="hunger-status">{{ hungerStatus }}</h6>
       <a href="#" class="card-link text-right" v-on:click.prevent="$emit('pet-click', index)">Details</a>
@@ -46,6 +46,23 @@ export default {
   computed: {
     hungerStatus() {
       return hungerStatus(this.satiety)
+    },
+
+    hungerStatusBasedStyle() {
+      switch (this.hungerStatus) {
+        case "Hungry":
+          return {
+            backgroundColor: "#ffc10785",
+          }
+        case "Starving":
+          return {
+            backgroundColor: "#ff1e0729",
+          }
+        case "Dead":
+          return {
+            backgroundColor: "lightgrey",
+          }
+      }
     },
   },
 
