@@ -168,9 +168,13 @@ export default {
     },
 
     onSubmit() {
-      store.commit("addPet", this.pet)
+      this.$validator.validateAll().then(result => {
+        if (result) {
+          store.commit("addPet", this.pet)
 
-      this.goToPetList()
+          this.goToPetList()
+        }
+      })
     },
 
     onCancel() {
