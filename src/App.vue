@@ -13,10 +13,9 @@ import "./style.css"
 import Navbar from "./components/Navbar"
 
 import store from "./store"
+import initStoreEventTimers from "./event-timers/init-store-event-timers"
 
-setInterval(() => {
-  store.commit("decreaseSatiety")
-}, 1000)
+initStoreEventTimers(store)
 
 export default {
   name: "App",
