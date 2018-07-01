@@ -7,4 +7,4 @@ export const FOOD_WEIGHTS = {
   Meat: 70,
 }
 
-export const FOOD_TYPES = Object.keys(FOOD_WEIGHTS)
+export const FOOD_TYPES = Object.keys(FOOD_WEIGHTS).sort()
