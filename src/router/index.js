@@ -7,6 +7,9 @@ import PetDetails from "@/components/PetDetails"
 Vue.use(Router)
 
 export default new Router({
+  /* global process:false */
+  base: process.env.NODE_ENV === "production" ? "/vue-test-01/" : "/",
+
   mode: "history",
 
   routes: [
